@@ -4,6 +4,12 @@ const app = require('express')()
 // Importando consign que ajudará na ligação e dependência entre os arquivos
 const consign = require('consign')
 
+// Importando instância do knex em db.js
+const db = require('./config/db')
+
+// Adicionando knex dentro de app 
+app.db = db
+
 //Chamando a função consign e encadeando
 consign()
     .then('./config/middlewares.js')

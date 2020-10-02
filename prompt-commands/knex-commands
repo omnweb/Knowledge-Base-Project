@@ -1,0 +1,5 @@
+1- into backend use knex init
+2- next use knex migrate:make create_table_users, for create the table users.
+3- next use knex migrate:make create_table_categories, for create the table categories.
+4- next use knex migrate:make create_table_articles, for create the table articles.
+5- 
