@@ -1,0 +1,9 @@
+******* INSTALAR POSTGRESQL
+
+1- Processo wizard
+2- Colocar nas variáveis de ambiente do windows
+2- Acessar usuário do postgre-> psql -U postgres 
+3- Criar base de dados -> create database teste_install;
+4- Conectar com a base de dados -> \c teste_install
+5- Testar tabelas \dt
+6  Para sair -> \q 

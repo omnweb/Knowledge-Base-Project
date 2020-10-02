@@ -1,0 +1,8 @@
+1- Acessar o usuário do postgre utilizando -> psql -U postgres
+2- Criar a base de dados -> create database knowledge_final;
+3- Para listar as bases usamos barra invertida + L ->  \l 
+4- Conectando ao banco \c knowledge_final;
+5- Listar tabelas -> \dt
+6- Instalar o knex de forma global npm i -g knex
+7- Dentro de frontend e de backend utilizar o comando npm i
+8- Duplicar o arquivo env_file e renomear para .env - > dentro de authSecret: '', usar qqr segredo, usado 'abc'

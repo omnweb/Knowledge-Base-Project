@@ -1,0 +1,4 @@
+n******** NPM COMMANDS
+1- Inside the backend folder use the npm i command to install the project's dependencies.
+2- Inside the frontend folder use the npm i command to install the project's dependencies.
+3- Inside the backend folder use the npm start for rum the server 

@@ -1,0 +1,2 @@
+//Instalando dependencias do Knex, que será utilizado para trabalhar com o postgre
+npm i -g knex
