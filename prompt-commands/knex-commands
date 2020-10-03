@@ -2,4 +2,6 @@
 2- next use knex migrate:make create_table_users, for create the table users.
 3- next use knex migrate:make create_table_categories, for create the table categories.
 4- next use knex migrate:make create_table_articles, for create the table articles.
-5- 
+5- to perform definitions for migrations use => knex migrate:latest
+6- To check the result of the operation use -> select * from knex_migrations;
+7- To reverse an operation use -> knex migrate:rollback;

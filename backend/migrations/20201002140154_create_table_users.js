@@ -1,7 +1,7 @@
 // Migrations servem para controlar a evolução do banco de dados 
 // Elas serão lidas e criarão sempre a versão mais novas das diretivas definidas em up e dow
 //
-exports.up = function(knex) {
+exports.up = function(knex, Promise) {
     // users é o nome da tb que será criada
   return knex.schema.createTable('users', table => {
       // Dentro de table ficarão as colunas
@@ -14,6 +14,6 @@ exports.up = function(knex) {
 };
 
 // No up foi colocado a insersão e no down a exclusão 
-exports.down = function(knex) {
-  return knex.shema.dropTable('users')
+exports.down = function(knex, Promise) {
+  return knex.schema.dropTable('users')
 };
