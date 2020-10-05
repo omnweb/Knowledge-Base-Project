@@ -19,6 +19,11 @@ module.exports = app => {
         .get(app.api.category.get)
         .post(app.api.category.save)
 
+    // Cuidado com a ordem!, tem que vir antes de ('/categories/:id')
+    // Rotas do método getTree
+    app.route( '/categories/tree')
+        .get(app.api.category.getTree)
+
      // Retornar os metodos de excluir 
      app.route('/categories/:id')
         .get(app.api.category.getById) 

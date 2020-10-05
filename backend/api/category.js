@@ -98,6 +98,30 @@ module.exports = app => {
             .then(category => res.json(category))
             .catch(err => res.status(500).send(err)) 
     }
+
+    // Criando menu em formato de árvore
+    const toTree = (categories, tree) => {
+        // Filtrando as categorias que não tem parent.id setado, que serão os pais
+        if(!tree) tree = categories.filter(c => !c.parentId)
+
+        // Pegando todos os parent Node ( nós filhos), referente aos pais
+        tree = tree.map(parentNode => {
+            const isChild = node => node.parentId === parentNode.id
+
+            // Gerando a árvore de nós
+            parentNode.children = toTree(categories, categories.filter(isChild))
+            return parentNode
+        })
+        return tree
+    }
+
+    // Função para renderizar o menu em formato de árvore
+    const getTree = (req, res) => {
+        app.db('categories')
+        // Recebendo a lista de categorias do banco de dados e repassando para o json
+            .then(categories => res.json(toTree(categories))) // Passando para withPath para montar os caminhos de depois para toTree para montar a árvore
+            .catch(err => res.status(500).send(err))
+       }
     //Retornando os métodos
-    return {save, remove, get, getById}
+    return {save, remove, get, getById, getTree}
 }
