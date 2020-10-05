@@ -70,6 +70,16 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
+    // Desafio, criando uma função que busca um usuário por id
+    const getById = (req, res) => {
+        app.db('users')
+            .select('id', 'name', 'email', 'admin' )
+            .where({id: req.params.id})
+            .first()
+            .then(user => res.json(user))
+            .catch(err => res.status(500).send(err))
+    }
+
     // Retornarndo um objeto com todas as funções deste módulo usuário
-    return { save, get }
+    return { save, get, getById }
 }

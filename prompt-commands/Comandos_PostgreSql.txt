@@ -7,3 +7,4 @@
 4- Conectar com a base de dados -> \c teste_install
 5- Testar tabelas \dt
 6  Para sair -> \q 
+7- selecionando usuários -> select * from users
