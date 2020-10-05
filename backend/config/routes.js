@@ -13,7 +13,22 @@ module.exports = app => {
     app.route('/users/:id')
         .put(app.api.user.save)
         .get(app.api.user.getById) // Acrescentando em rotas a pesquisa por id
+
+    // Rotas para os métodos get e save de categories
+    app.route('/categories')
+        .get(app.api.category.get)
+        .post(app.api.category.save)
+
+     // Retornar os metodos de excluir 
+     app.route('/categories/:id')
+        .get(app.api.category.getById) 
+        .put(app.api.category.save)
+        .delete(app.api.category.remove)
+        
 }
+    
+
+   
 
 // // Forma padrão de vincular a url users pra chamar o metodo save
 // // sem usar consign
