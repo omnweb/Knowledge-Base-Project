@@ -13,7 +13,8 @@ app.db = db
 //Chamando a função consign e encadeando
 consign()
     .then('./config/middlewares.js')
-    .then('/api') // Carregando a api
+    .then('./api/validation.js') // Carregando validation
+    .then('./api') // Carregando a api
     .then('./config/routes.js') //Quando ler as rotas a api já estará carregada
     .into(app) // Injeta o express em cada dependêcia criad
 
