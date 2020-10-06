@@ -4,6 +4,11 @@ const { get } = require("mongoose")
 module.exports = app => {
     //Definindo as rotas da aplicação
 
+    // Rotas para o sistema de login
+    app.post('/signup', app.api.user.save) //salvar usuário
+    app.post('/signin', app.api.auth.signin) // autenticar usuário
+    app.post('/validateToken', app.api.auth.validateToken) // validar token
+
     // Mapeando post
     app.route('/users')
         // cai aqui qdo a requisição na url users for do tipo post

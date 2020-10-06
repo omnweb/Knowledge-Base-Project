@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt-nodejs')
 
 module.exports = app => {
     //Função de login
-    const signin = async (rec, res) => {
+    const signin = async (req, res) => {
         if(!req.body.email || !req.body.password){
             return res.status(400).send('Informe usuário e senha!')
         }
@@ -15,7 +15,7 @@ module.exports = app => {
 
         //A senha como é criptografada é comparada da seguinte maneira:
         const isMatch = bcrypt.compareSync(req.body.password, user.password) // Pega a senha digitada passa no bcrypt e compara com a senha do usuário
-        if(!isMatch) return res.status(401)/send('Email/Senha não conferem')
+        if(!isMatch) return res.status(401).send('Email/Senha não conferem')
 
         // Gerando um tokem que será o tempo máximo que o usuário permanecerá logado
         const now = Math.floor(Date.now()/ 1000) // Recebendo a data atual em segundos
@@ -37,4 +37,20 @@ module.exports = app => {
             token: jwt.encode(payload, authSecret) // Qqr nova requisição precisará ter um cabeçalho de autorização
         })
     }
+    const validateToken = async (req, res) => {
+        const userData = req.body || null
+        try{
+            if(userData){
+                const token = jwt.decode(userData.token, authSecret) // Decodificando o token
+                if(new Date(token.exp * 1000) > new Date()){// Se a data de expiração do token for < que a data atual
+                    return res.send(true) // Token válido, nesse momento o token pode ser renovado sem o usuário perceber...
+                }
+            }
+        } catch(e) {
+            //Problema no token
+        }
+        res.send(false)
+    }
+
+    return { signin, validateToken }
 }
