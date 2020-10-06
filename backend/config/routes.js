@@ -1,3 +1,5 @@
+const { get } = require("mongoose")
+
 // Criando uma função que vai exportar as rotas
 module.exports = app => {
     //Definindo as rotas da aplicação
@@ -39,7 +41,10 @@ module.exports = app => {
         .get(app.api.article.getById) 
         .put(app.api.article.save)
         .delete(app.api.article.remove)
-        
+      
+    // Rotas para o método de busca de filhos de category
+    app.route('/categories/:id/articles')
+        .get(app.api.article.getByCategory)
 }
     
 
