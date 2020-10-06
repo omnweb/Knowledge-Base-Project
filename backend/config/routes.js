@@ -20,15 +20,25 @@ module.exports = app => {
         .post(app.api.category.save)
 
     // Cuidado com a ordem!, tem que vir antes de ('/categories/:id')
-    // Rotas do método getTree
+    // Rotas do método getTree de categories
     app.route( '/categories/tree')
         .get(app.api.category.getTree)
 
-     // Retornar os metodos de excluir 
+     // Retornar os metodos Categorias
      app.route('/categories/:id')
         .get(app.api.category.getById) 
         .put(app.api.category.save)
         .delete(app.api.category.remove)
+
+    // Métodos de artigos
+    app.route('/articles')
+        .get(app.api.article.get)
+        .post(app.api.article.save)
+    
+    app.route('/articles/:id')
+        .get(app.api.article.getById) 
+        .put(app.api.article.save)
+        .delete(app.api.article.remove)
         
 }
     
