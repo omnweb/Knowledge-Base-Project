@@ -9,46 +9,55 @@ module.exports = app => {
     app.post('/signin', app.api.auth.signin) // autenticar usuário
     app.post('/validateToken', app.api.auth.validateToken) // validar token
 
+
     // Mapeando post
     app.route('/users')
         // cai aqui qdo a requisição na url users for do tipo post
+        .all(app.config.passport.authenticate()) //Se der problema na autenticação ele não deixa chamar os métodos debaixo 
         .post(app.api.user.save) // Forma de acessar usando consign
         .get(app.api.user.get) // Acessando método get
         
 
     // O método inserir e alterar são o mesmo, mas atuam em urls diferentes
     app.route('/users/:id')
+        .all(app.config.passport.authenticate())
         .put(app.api.user.save)
         .get(app.api.user.getById) // Acrescentando em rotas a pesquisa por id
 
     // Rotas para os métodos get e save de categories
     app.route('/categories')
+        .all(app.config.passport.authenticate())
         .get(app.api.category.get)
         .post(app.api.category.save)
 
     // Cuidado com a ordem!, tem que vir antes de ('/categories/:id')
     // Rotas do método getTree de categories
     app.route( '/categories/tree')
+        .all(app.config.passport.authenticate())
         .get(app.api.category.getTree)
 
      // Retornar os metodos Categorias
      app.route('/categories/:id')
+        .all(app.config.passport.authenticate())
         .get(app.api.category.getById) 
         .put(app.api.category.save)
         .delete(app.api.category.remove)
 
     // Métodos de artigos
     app.route('/articles')
+        .all(app.config.passport.authenticate())
         .get(app.api.article.get)
         .post(app.api.article.save)
     
     app.route('/articles/:id')
+        .all(app.config.passport.authenticate())
         .get(app.api.article.getById) 
         .put(app.api.article.save)
         .delete(app.api.article.remove)
       
     // Rotas para o método de busca de filhos de category
     app.route('/categories/:id/articles')
+        .all(app.config.passport.authenticate())
         .get(app.api.article.getByCategory)
 }
     

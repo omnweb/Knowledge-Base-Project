@@ -12,6 +12,7 @@ app.db = db
 
 //Chamando a função consign e encadeando
 consign()
+    .include('./config/passport.js')
     .then('./config/middlewares.js')
     .then('./api/validation.js') // Carregando validation
     .then('./api') // Carregando a api
