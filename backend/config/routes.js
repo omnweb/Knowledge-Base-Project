@@ -24,6 +24,7 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .put(admin(app.api.user.save))
         .get(admin(app.api.user.getById)) // Acrescentando em rotas a pesquisa por id
+        .delete(admin(app.api.user.remove))
 
     // Rotas para os métodos get e save de categories
     app.route('/categories')
