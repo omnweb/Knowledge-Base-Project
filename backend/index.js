@@ -7,8 +7,17 @@ const consign = require('consign')
 // Importando instância do knex em db.js
 const db = require('./config/db')
 
+//Carregando o arquivo mongod
+require('./config/mongod')
+
+// Importando Mongoose
+const mongoose = require('mongoose')
+
 // Adicionando knex dentro de app 
 app.db = db
+
+//Adicionando mongoose dentro de app
+app.mongoose = mongoose
 
 //Chamando a função consign e encadeando
 consign()
