@@ -19,15 +19,15 @@ module.exports = app => {
         const stat = new Stat({
             users: usersCount.count,
             categories: categoriesCount.count,
-            articles: articlesCount.coun,
+            articles: articlesCount.count,
             createdAt: new Date()
         })
 
         //Agora usando a ultima estatística compara se houve mundanças
         // Se houve persiste no banco, senão espera a próxima chamada.  
-        const changeUsers = !lastStat || status.users !== lastStat.users // Se a ultima estatística não estiver setada ou se o valor for diferente é pq o usuário mudou
-        const changeCategories = !lastStat || status.categories !== lastStat.categories
-        const changeArticles = !lastStat || status.articles !== lastStat.articles
+        const changeUsers = !lastStat || stat.users !== lastStat.users // Se a ultima estatística não estiver setada ou se o valor for diferente é pq o usuário mudou
+        const changeCategories = !lastStat || stat.categories !== lastStat.categories
+        const changeArticles = !lastStat || stat.articles !== lastStat.articles
 
         //Se mudar a estatística de qualquer um dos abaixo
         if (changeUsers || changeCategories || changeArticles) {
