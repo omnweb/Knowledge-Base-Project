@@ -5,3 +5,5 @@
 5- to perform definitions for migrations use => knex migrate:latest
 6- To check the result of the operation use -> select * from knex_migrations;
 7- To reverse an operation use -> knex migrate:rollback;
+8- Adicionando uma nova migration -> knex migrate:make add_deleted_at_table_users  e depois knex migrate:latest
+
