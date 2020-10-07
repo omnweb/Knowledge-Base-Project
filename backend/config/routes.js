@@ -60,6 +60,11 @@ module.exports = app => {
     app.route('/categories/:id/articles')
         .all(app.config.passport.authenticate())
         .get(app.api.article.getByCategory)
+
+    // Rota para stat
+    app.route('/stats')
+        //.all(app.config.passport.authenticate())
+        .get(app.api.stat.get)
 }
 
 

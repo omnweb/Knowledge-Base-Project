@@ -1,7 +1,7 @@
 const mongoose = require('mongoose') // Inportando mongoose
 
 // Criando uma conexão com o mongo db
-mongoose.connect('mongodb://localhost:knowledge_stats', { useNewUrlParser: true, useUnifiedTopology: true, }) // Acrescentei useUnifiedTopology: true para corrigir um warning
+mongoose.connect('mongodb://localhost:knowledge_stats', { useNewUrlParser: true, useUnifiedTopology: true }) // Acrescentei useUnifiedTopology: true para corrigir um warning
     .catch(e => {
         //Caso tenha erro de conexão cai aqui
         const msg = 'Erro de conexão com o MongoDB!'
