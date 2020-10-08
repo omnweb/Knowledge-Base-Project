@@ -19,6 +19,12 @@ module.exports = app => {
         //Verificando se o id está setado user.id = id da requisição
         if (req.params.id) user.id = req.params.id
 
+        // Fazendo com que o usuário inicial receba o parâmetro admin como falso
+        if (!req.originalUrl.startsWith('/users')) user.admin = false
+
+        //Condição que se não está logado nem é administrador
+        if (!req.user || !req.user.admin) user.admin = false
+
         //validações
         try {
             existsOrError(user.name, 'Nome não informado') // Mensagem caso o campo nome não esteja preenchifo
