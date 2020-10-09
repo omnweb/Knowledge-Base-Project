@@ -1,10 +1,14 @@
 <template>
-  <aside class="menu"></aside>
+  <aside class="menu" v-show="isMenuVisible"></aside>
 </template>
 
 <script>
+// Estabelecendo a conversa com header para abrir e fechar esse componente
+import { mapState } from "vuex"; // Responsável por mapear um atributo da store dentro desse componente
+
 export default {
   name: "Menu",
+  computed: mapState(["isMenuVisible"]), // Mapeando apenas o atributo isMenuVisible, mas pode ser passado um objeto
 };
 </script>
 

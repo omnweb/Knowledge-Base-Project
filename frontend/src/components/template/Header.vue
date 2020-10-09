@@ -1,29 +1,33 @@
 <template>
   <header class="header">
-    <div :class="['container', { change: toggled }]" @click="myFunction">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </div>
+    <a class="toggle" @click="toggleMenu" v-if="hideToggle">
+      <i class="fa fa-lg" :class="icon"></i>
+    </a>
     <h1 class="title">{{ title }}</h1>
+    <UserDropdown v-if="!hideUserDropdown" />
   </header>
 </template>
 
 <script>
+// Importando componente dropdown
+import UserDropdown from "./UserDropdown";
 export default {
   name: "Header",
+  components: { UserDropdown },
   props: {
     title: String,
+    hideToggle: Boolean,
+    hideUserDropdown: Boolean,
   },
-  data() {
-    return {
-      toggled: false,
-    };
+  computed: {
+    icon() {
+      return this.$store.state.isMenuVisible ? "fa-times" : "fa-bars";
+    },
   },
   methods: {
     // função que será chamada quando clicado no ícone <
-    myFunction() {
-      this.toggled = !this.toggled;
+    toggleMenu() {
+      this.$store.commit("toggleMenu");
     },
   },
 };
@@ -35,8 +39,9 @@ export default {
 .header {
   grid-area: header;
   background-image: linear-gradient(to right, #1e409a, #49a7c1);
+
   display: flex;
-  justify-content: start; /*Justificando o conteúdo na linha */
+  justify-content: center; /*Justificando o conteúdo na linha */
   align-items: center; /*Centralizando a coluna*/
 }
 .title {
@@ -50,37 +55,20 @@ title.a {
   color: #fff;
   text-decoration: none;
 }
-/*toggleMenu*/
-.container {
-  display: inline-block;
-  cursor: pointer;
-  padding: 15px;
+
+header.header > a.toggle {
+  width: 60px;
+  height: 100%;
+  color: #49a7c1;
+  justify-self: start;
+  text-decoration: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.bar1,
-.bar2,
-.bar3 {
-  width: 35px;
-  height: 5px;
-  background-color: #49a7c1;
-  margin: 6px 0;
-  transition: 0.4s;
-}
-
-/* Rotate first bar */
-.change .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-  transform: rotate(-45deg) translate(-9px, 6px);
-}
-
-/* Fade out the second bar */
-.change .bar2 {
-  opacity: 0;
-}
-
-/* Rotate last bar */
-.change .bar3 {
-  -webkit-transform: rotate(45deg) translate(-8px, -8px);
-  transform: rotate(45deg) translate(-8px, -8px);
+header.header > a.toggle:hover {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 </style>
