@@ -59,7 +59,7 @@ title.a {
 header.header > a.toggle {
   width: 60px;
   height: 100%;
-  color: #49a7c1;
+  color: #fff;
   justify-self: start;
   text-decoration: none;
 
@@ -69,6 +69,7 @@ header.header > a.toggle {
 }
 
 header.header > a.toggle:hover {
+  color: #fff;
   background-color: rgba(0, 0, 0, 0.2);
 }
 </style>
