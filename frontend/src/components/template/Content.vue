@@ -1,11 +1,11 @@
 <template>
-  <div class="content">Conteúdo</div>
+  <div class="content"></div>
 </template>
 
 <script>
 export default {
   // Tudo que está aqui será exportado para fora do componente
-  name: "content",
+  name: "Content",
 };
 </script>
 
