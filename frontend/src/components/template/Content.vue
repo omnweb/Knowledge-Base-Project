@@ -1,5 +1,8 @@
 <template>
-  <div class="content"></div>
+  <div class="content">
+    <router-view></router-view>
+    <!-- Sempre que um compoente for selecionado ele vai renderizar aqui -->
+  </div>
 </template>
 
 <script>

@@ -1,13 +1,17 @@
 <template>
-  <div class="home">
-    <PageTitle icon="fa fa-home" main="Dashboard" sub="Base de Conhecimento" />
+  <div class="admin-pages">
+    <PageTitle
+      icon="fa fa-cogs"
+      main="Administração do Sistema"
+      sub="Cadastror & Cia"
+    />
   </div>
 </template>
 
 <script>
 import PageTitle from "../template/PageTitle";
 export default {
-  name: "Home",
+  name: "AdminPages",
   components: { PageTitle },
 };
 </script>

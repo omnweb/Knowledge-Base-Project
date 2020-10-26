@@ -3,7 +3,9 @@
     <a class="toggle" @click="toggleMenu" v-if="hideToggle">
       <i class="fa fa-lg" :class="icon"></i>
     </a>
-    <h1 class="title">{{ title }}</h1>
+    <h1 class="title">
+      <router-link to="/"> {{ title }} </router-link>
+    </h1>
     <UserDropdown v-if="!hideUserDropdown" />
   </header>
 </template>
@@ -38,7 +40,7 @@ export default {
 <style>
 .header {
   grid-area: header;
-  background-image: linear-gradient(to right, #1e409a, #49a7c1);
+  background: linear-gradient(to right, #1e409a, #49a7c1);
 
   display: flex;
   justify-content: center; /*Justificando o conteúdo na linha */
@@ -51,7 +53,11 @@ export default {
   flex-grow: 1;
   text-align: center;
 }
-title.a {
+.title a {
+  color: #fff;
+  text-decoration: none;
+}
+.title a:hover {
   color: #fff;
   text-decoration: none;
 }
