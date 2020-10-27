@@ -14,9 +14,9 @@ module.exports = app => {
     // Mapeando post
     app.route('/users')
         // cai aqui qdo a requisição na url users for do tipo post
-        .all(app.config.passport.authenticate()) //Se der problema na autenticação ele não deixa chamar os métodos debaixo 
-        .post(admin(app.api.user.save)) // Forma de acessar usando consign
-        .get(admin(app.api.user.get)) // Acessando método get
+        // .all(app.config.passport.authenticate()) //Se der problema na autenticação ele não deixa chamar os métodos debaixo 
+        .post(app.api.user.save) // Forma de acessar usando consign
+        .get((app.api.user.get)) // Acessando método get
 
 
     // O método inserir e alterar são o mesmo, mas atuam em urls diferentes
