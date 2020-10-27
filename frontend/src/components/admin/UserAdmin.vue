@@ -1,6 +1,6 @@
 <template>
   <div class="user-admin">
-    <h1>Usuário Componete</h1>
+    <b-table hover striped :intems="users"></b-table>
   </div>
 </template>
 
@@ -19,16 +19,27 @@ export default {
       mode: "save", // vai trocar entre o módulo de exclusão e o modo save
       user: {}, // Inicia vazio, mas recebe as operações a serem realizadas no banco
       users: [], // Será renderizado uma tabela com os usuários
+      fields: [
+        { key: "id", label: "Código", sortable: true },
+        { key: "name", label: "Nome", sortable: true },
+        { key: "email", label: "E-mail", sortable: true },
+        {
+          key: "admin",
+          label: "Administrador",
+          sortable: true,
+          formatter: (value) => (value ? "sim" : "não"),
+        },
+        { key: "action", label: "Ações" },
+      ],
     };
   },
   methods: {
     //Carregar lista de usuários do backend
     loadUsers() {
-      const url = `${baseApiUrl}/users`;
-      axios.get(url).then((res) => {
-        this.users = res.data;
-        console.log(this.users);
-      });
+      axios
+        .get(`${baseApiUrl}/users`) // Recebendo dados do backend
+        .then((res) => (this.users = res.data)); // setando dentro de data.stat
+      console.log(this.users);
     },
   },
   mounted() {
