@@ -7,6 +7,8 @@ import App from './App'
 //importando Bootstrap e arquivos vinculados
 import './config/bootstrap'
 
+import './config/msgs'
+
 //Importando a store
 import store from './config/store' // Importando instância de store
 import router from './config/router' // Importando instância de router
