@@ -3,7 +3,7 @@
     <PageTitle
       icon="fa fa-cogs"
       main="Administração do Sistema"
-      sub="Cadastror & Cia"
+      sub="Cadastros & Cia"
     />
     <div class="admin-pages-tabs">
       <!-- Tags q começam com b vem do vue-bootstrap -->
@@ -12,7 +12,7 @@
           <b-tab title="Artigos" active>
             <ArticleAdmin />
           </b-tab>
-          <b-tab title="Artigos" Categorias>
+          <b-tab title="Categorias">
             <CategoryAdmin />
           </b-tab>
           <b-tab title="Usuários">

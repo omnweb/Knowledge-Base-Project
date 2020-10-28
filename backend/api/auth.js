@@ -1,5 +1,5 @@
 const { authSecret } = require('../.env') // Importando .env com a chave
-const jwt = require('jwt-simple') //
+const jwt = require('jwt-simple')
 const bcrypt = require('bcrypt-nodejs')
 
 module.exports = app => {

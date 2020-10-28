@@ -1,7 +1,7 @@
 <template>
   <div class="user-admin">
     <b-form>
-      <input type="hidden" id="user-id" v-model="user.id" />
+      <input id="user-id" type="hidden" v-model="user.id" />
       <b-row>
         <b-col md="6" sm="12">
           <b-form-group label="Nome:" label-for="user-name">
@@ -12,7 +12,7 @@
               v-model="user.name"
               required
               :readonly="mode === 'remove'"
-              placeholder="Informe o nome do usuário..."
+              placeholder="Informe o Nome do Usuário..."
             />
           </b-form-group>
         </b-col>
@@ -25,7 +25,7 @@
               v-model="user.email"
               required
               :readonly="mode === 'remove'"
-              placeholder="Informe o E-mail do usuário..."
+              placeholder="Informe o E-mail do Usuário..."
             />
           </b-form-group>
         </b-col>
@@ -47,7 +47,7 @@
               type="password"
               v-model="user.password"
               required
-              placeholder="Informe a senha do usuário..."
+              placeholder="Informe a Senha do Usuário..."
             />
           </b-form-group>
         </b-col>
@@ -62,7 +62,7 @@
               autocomplete="on"
               v-model="user.confirmPassword"
               required
-              placeholder="Confirme a senha do usuário..."
+              placeholder="Confirme a Senha do Usuário..."
             />
           </b-form-group>
         </b-col>
@@ -134,14 +134,16 @@ export default {
         }); // setando dentro de data.stat
     },
     reset() {
-      (this.mode = "save"), (this.users = {}), this.loadUsers();
+      this.mode = "save";
+      this.user = {};
+      this.loadUsers();
     },
     save() {
       const method = this.user.id ? "put" : "post";
       const id = this.user.id ? `/${this.user.id}` : "";
       axios[method](`${baseApiUrl}/users${id}`, this.user)
         .then(() => {
-          this.$toasted.global.defaltSuccess();
+          this.$toasted.global.defaultSuccess();
           this.reset();
         })
         .catch(showError);
@@ -151,7 +153,7 @@ export default {
       axios
         .delete(`${baseApiUrl}/users/${id}`)
         .then(() => {
-          this.$toasted.global.defaltSuccess();
+          this.$toasted.global.defaultSuccess();
           this.reset();
         })
         .catch(showError);
