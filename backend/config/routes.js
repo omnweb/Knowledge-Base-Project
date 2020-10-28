@@ -8,7 +8,7 @@ module.exports = app => {
     // Rotas para o sistema de login
     app.post('/signup', app.api.user.save) //salvar usuário
     app.post('/signin', app.api.auth.signin) // autenticar usuário
-    app.post('/validateToken', app.api.auth.validateToken) // validar token
+    // app.post('/validateToken', app.api.auth.validateToken) // validar token
 
 
     // Mapeando post
@@ -21,45 +21,45 @@ module.exports = app => {
 
     // O método inserir e alterar são o mesmo, mas atuam em urls diferentes
     app.route('/users/:id')
-        .all(app.config.passport.authenticate())
-        .put(admin(app.api.user.save))
-        .get(admin(app.api.user.getById)) // Acrescentando em rotas a pesquisa por id
-        .delete(admin(app.api.user.remove))
+        // .all(app.config.passport.authenticate())
+        .put((app.api.user.save))
+        .get((app.api.user.getById)) // Acrescentando em rotas a pesquisa por id
+        .delete((app.api.user.remove))
 
     // Rotas para os métodos get e save de categories
     app.route('/categories')
-        .all(app.config.passport.authenticate())
-        .get(admin(app.api.category.get))
-        .post(admin(app.api.category.save))
+        // .all(app.config.passport.authenticate())
+        .get((app.api.category.get))
+        .post((app.api.category.save))
 
     // Cuidado com a ordem!, tem que vir antes de ('/categories/:id')
     // Rotas do método getTree de categories
     app.route('/categories/tree')
-        .all(app.config.passport.authenticate())
+        // .all(app.config.passport.authenticate())
         .get(app.api.category.getTree)
 
     // Retornar os metodos Categorias
     app.route('/categories/:id')
-        .all(app.config.passport.authenticate())
+        // .all(app.config.passport.authenticate())
         .get(app.api.category.getById)
-        .put(admin(app.api.category.save))
-        .delete(admin(app.api.category.remove))
+        .put((app.api.category.save))
+        .delete((app.api.category.remove))
 
     // Métodos de artigos
     app.route('/articles')
-        .all(app.config.passport.authenticate())
-        .get(admin(app.api.article.get))
-        .post(admin(app.api.article.save))
+        // .all(app.config.passport.authenticate())
+        .get((app.api.article.get))
+        .post((app.api.article.save))
 
     app.route('/articles/:id')
-        .all(app.config.passport.authenticate())
+        // .all(app.config.passport.authenticate())
         .get(app.api.article.getById)
-        .put(admin(app.api.article.save))
-        .delete(admin(app.api.article.remove))
+        .put((app.api.article.save))
+        .delete((app.api.article.remove))
 
     // Rotas para o método de busca de filhos de category
     app.route('/categories/:id/articles')
-        .all(app.config.passport.authenticate())
+        // .all(app.config.passport.authenticate())
         .get(app.api.article.getByCategory)
 
     // Rota para stat
