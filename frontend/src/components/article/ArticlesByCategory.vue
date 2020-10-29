@@ -49,6 +49,25 @@ export default {
       });
     },
   },
+  watch: {
+    //Monitora as rotas
+    $route(to) {
+      //Responde a cada mudança de rotas no menu
+      this.category.id = this.$route.params.id; //Passando a url para this.category.id
+      // Zerando o array de Artigos
+      this.articles = [];
+
+      //Zerando pages valor padrão
+      this.page = 1;
+
+      //Setando valor padrão em loadMore
+      this.loadMore = true;
+
+      //Chamando os métodos sempre que a rota mudar
+      this.getCategory();
+      this.getArticles();
+    },
+  },
   mounted() {
     //console.log(this.$route.params.id); através da rota pegando o parâmetro id
     this.category.id = this.$route.params.id;

@@ -49,6 +49,19 @@ export default {
       const url = `${baseApiUrl}/categories/tree`;
       return axios.get(url).then((res) => res.data); // retornando uma promisse
     },
+    onNodeSelect(node) {
+      //Nagevação do menu
+      this.$router.push({
+        // Adicionando uma nova rota
+        name: "ArticlesByCategory", //nome da rota
+        params: { id: node.id }, //Passando o id do nó que é o mesmo da categoria
+      });
+    },
+  },
+  // Usando o $on() para vincular o evento node:selected de click no link do menu
+  // à referência ref="tree" criada dentro de <Tree />
+  mounted() {
+    this.$refs.tree.$on("node:selected", this.onNodeSelect);
   },
 };
 </script>
