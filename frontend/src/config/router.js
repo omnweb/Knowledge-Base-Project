@@ -6,6 +6,7 @@ import AdminPages from '@/components/admin/AdminPages'
 
 import ArticlesByCategory from '@/components/article/ArticlesByCategory'
 import ArticleById from '@/components/article/ArticleById'
+import Auth from '@/components/auth/Auth'
 
 //Registrando o vueRouter dentro dou vue
 Vue.use(VueRouter)
@@ -31,6 +32,11 @@ const routes = [{
     name: 'ArticleById',
     path: '/articles/:id',
     component: ArticleById
+},
+{
+    name: 'auth',
+    path: '/auth',
+    component: Auth
 }]
 
 // Instanciando o VueRouter
