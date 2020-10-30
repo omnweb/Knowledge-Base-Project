@@ -64,7 +64,7 @@ module.exports = app => {
 
     // Rota para stat
     app.route('/stats')
-        .all(app.config.passport.authenticate())
+        //.all(app.config.passport.authenticate())
         .get(app.api.stat.get)
 }
 
