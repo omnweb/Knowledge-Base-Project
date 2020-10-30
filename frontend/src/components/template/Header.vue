@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <a class="toggle" @click="toggleMenu" v-if="hideToggle">
+    <a class="toggle" @click="toggleMenu" v-if="!hideToggle">
       <i class="fa fa-lg" :class="icon"></i>
     </a>
     <h1 class="title">
@@ -66,7 +66,7 @@ header.header > a.toggle {
   width: 60px;
   height: 100%;
   color: #fff;
-  justify-self: start;
+  justify-self: flex-start;
   text-decoration: none;
 
   display: flex;

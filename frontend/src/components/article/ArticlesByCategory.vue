@@ -53,7 +53,7 @@ export default {
     //Monitora as rotas
     $route(to) {
       //Responde a cada mudança de rotas no menu
-      this.category.id = this.$route.params.id; //Passando a url para this.category.id
+      this.category.id = to.params.id; //Passando a url para this.category.id
       // Zerando o array de Artigos
       this.articles = [];
 
