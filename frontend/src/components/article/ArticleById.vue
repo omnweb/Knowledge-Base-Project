@@ -15,6 +15,9 @@
 import axios from "axios";
 import { baseApiUrl } from "@/global";
 import PageTitle from "../template/PageTitle";
+import "highlightjs/styles/dracula.css";
+import hljs from "highlightjs/highlight.pack.js";
+
 export default {
   name: "ArticleById",
   components: { PageTitle },
@@ -26,6 +29,11 @@ export default {
   mounted() {
     const url = `${baseApiUrl}/articles/${this.$route.params.id}`;
     axios.get(url).then((res) => (this.article = res.data)); // Já vem em formato html
+  },
+  updated() {
+    document.querySelectorAll(".article-content pre").forEach((e) => {
+      hljs.highlightBlock(e);
+    });
   },
 };
 </script>

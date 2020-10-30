@@ -56,6 +56,10 @@ export default {
         name: "ArticlesByCategory", //nome da rota
         params: { id: node.id }, //Passando o id do nó que é o mesmo da categoria
       });
+      //Definindo o fechamento automático do menu em dispositivos pequenos após o item ser selecionado
+      if (this.$mq === "xs" || this.$mq === "sm") {
+        this.$store.commit("toggleMenu", false);
+      }
     },
   },
   // Usando o $on() para vincular o evento node:selected de click no link do menu
