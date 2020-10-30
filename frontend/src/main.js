@@ -12,6 +12,7 @@ import './config/msgs'
 //Importando a store
 import store from './config/store' // Importando instância de store
 import router from './config/router' // Importando instância de router
+import axios from './config/axios'
 
 
 Vue.config.productionTip = false
