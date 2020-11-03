@@ -90,6 +90,12 @@
         </b-button>
       </template>
     </b-table>
+    <b-pagination
+      size="md"
+      v-model="page"
+      :total-rows="count"
+      :per-page="limit"
+    />
   </div>
 </template>
 
@@ -108,6 +114,9 @@ export default {
       mode: "save", // vai trocar entre o módulo de exclusão e o modo save
       user: {}, // Inicia vazio, mas recebe as operações a serem realizadas no banco
       users: [], // Será renderizado uma tabela com os usuários
+      page: 1,
+      limit: 0,
+      count: 0,
       fields: [
         { key: "id", label: "Código", sortable: true },
         { key: "name", label: "Nome", sortable: true },
@@ -125,11 +134,13 @@ export default {
   methods: {
     //Carregar lista de usuários do backend
     loadUsers() {
-      const url = `${baseApiUrl}/users`;
+      const url = `${baseApiUrl}/users?page=${this.page}`;
       axios
         .get(url) // Recebendo dados do backend
         .then((res) => {
-          this.users = res.data;
+          this.users = res.data.data;
+          this.count = res.data.count;
+          this.limit = res.data.limit;
           // console.log(this.users);
         }); // setando dentro de data.stat
     },
@@ -161,6 +172,11 @@ export default {
     loadUser(user, mode = "save") {
       this.mode = mode;
       this.user = { ...user };
+    },
+  },
+  watch: {
+    page() {
+      this.loadUsers();
     },
   },
   mounted() {

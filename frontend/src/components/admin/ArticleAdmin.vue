@@ -182,7 +182,8 @@ export default {
     loadUsers() {
       const url = `${baseApiUrl}/users`;
       axios.get(url).then((res) => {
-        this.users = res.data.map((user) => {
+        this.users = res.data.data.map((user) => {
+          // console.log(res.data.data);
           return { value: user.id, text: `${user.name} - ${user.email}` };
         });
       });

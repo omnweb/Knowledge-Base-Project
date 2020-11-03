@@ -70,11 +70,20 @@ module.exports = app => {
 
     // Busca os usuários do sistema
     // Implantar a paginação que estará presente em artigos
-    const get = (req, res) => {
+    const limit = 3
+    const get = async (req, res) => {
+
+        const page = req.query.page || 1
+        const result = await app.db('users').whereNull('deletedAt').count('id').first()
+        const count = parseInt(result.count)
+
+
+
         app.db('users')
             .select('id', 'name', 'email', 'admin')
+            .limit(limit).offset(page * limit - limit)
             .whereNull('deletedAt') // Excluindo usuários deletados da consulta
-            .then(users => res.json(users))
+            .then(users => res.json({ data: users, count, limit }))
             .catch(err => res.status(500).send(err))
     }
 
