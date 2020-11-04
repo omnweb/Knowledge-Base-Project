@@ -40,7 +40,12 @@ export default {
 <style>
 .header {
   grid-area: header;
-  background: linear-gradient(to right, #1e409a, #49a7c1);
+  background: linear-gradient(
+    to right,
+    #0f2027,
+    #203a43,
+    #2c5364
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   display: flex;
   justify-content: center; /*Justificando o conteúdo na linha */

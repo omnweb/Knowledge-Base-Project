@@ -7,19 +7,19 @@
         title="Categorias"
         :value="stat.categories"
         icon="fa fa-sitemap"
-        color="#d54d50"
+        color="#aa4b6b"
       />
       <Stat
         title="Artigos"
         :value="stat.articles"
         icon="fa fa-newspaper-o"
-        color="#3bc480"
+        color="#6C5B7B"
       />
       <Stat
         title="Usuários"
         :value="stat.users"
         icon="fa fa-user-circle"
-        color="#3282cd"
+        color="#3b8d99"
       />
     </div>
   </div>
