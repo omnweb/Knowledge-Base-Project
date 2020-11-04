@@ -1,7 +1,7 @@
 <template>
   <div class="auth-content">
     <div class="auth-modal">
-      <img src="@/assets/logo.png" width="200" alt="logotipo" />
+      <img src="@/assets/logo.png" width="120" alt="logotipo" />
       <hr />
       <div class="auth-title">{{ showSignup ? "Cadastro" : "Login" }}</div>
       <input
@@ -28,8 +28,8 @@
         type="password"
         placeholder="Confirme a senha"
       />
-      <button v-if="showSignup" @click="signup">Registrar</button>
-      <button v-else @click="signin">Entrar</button>
+      <b-button v-if="showSignup" @click="signup">Registrar</b-button>
+      <b-button v-else @click="signin">Entrar</b-button>
 
       <!-- Link que alterna entre telas login e registre-se -->
       <a href @click.prevent="showSignup = !showSignup">
@@ -114,13 +114,18 @@ export default {
 
 .auth-modal button {
   align-self: flex-end;
-  background-color: #2460ae;
+  background-color: #080e24;
   color: #fff;
   padding: 5px 15px;
 }
 
 .auth-modal a {
   margin-top: 25px;
+  color: #777;
+  text-decoration: none;
+}
+.auth-modal a:hover {
+  color: #080e24;
 }
 
 .auth-modal hr {
