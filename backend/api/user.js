@@ -70,7 +70,7 @@ module.exports = app => {
 
     // Busca os usuários do sistema
     // Implantar a paginação que estará presente em artigos
-    const limit = 3
+    const limit = 10
     const get = async (req, res) => {
 
         const page = req.query.page || 1

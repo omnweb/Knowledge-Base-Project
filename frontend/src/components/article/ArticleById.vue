@@ -43,6 +43,27 @@ export default {
   background-color: #fff;
   border-radius: 8px;
   padding: 25;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-content h1 {
+  margin-top: 30px;
+}
+
+.article-content p,
+span,
+blockquote {
+  padding: 0 4% 0 4%;
+  text-align: justify;
+}
+
+.article-content iframe {
+  width: 800px;
+  height: 400px;
 }
 
 /* Limitando o tamanho da imagem a ser exibido */
@@ -58,6 +79,7 @@ export default {
   font-size: 1.2rem;
   background-color: #1e1e1e;
   color: #e1e1e1;
+  max-width: 80%;
 }
 
 /* Deixando o último elemento sem margin na parte de baixo */

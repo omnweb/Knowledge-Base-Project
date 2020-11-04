@@ -87,10 +87,18 @@ module.exports = app => {
         return categoriesWithPath
     }
 
+    // Função de paginação
+    const limit = 5
+
     //Retornando todas as categorias
-    const get = (req, res) => {
+    const get = async (req, res) => {
+        const page = req.query.page || 1
+        const result = await app.db('categories').count('id').first()
+        const count = parseInt(result.count)
+
         app.db('categories') //Se não quiser filtrar as categorias já é suficiente para mostrar
-            .then(categories => res.json(withPath(categories)))
+            .limit(limit).offset(page * limit - limit)
+            .then(categories => res.json({ data: withPath(categories), count, limit }))
             .catch(err => res.status(500).send(err))
     }
 
