@@ -55,7 +55,6 @@ export default {
 }
 
 .article-content p,
-span,
 blockquote {
   padding: 0 4% 0 4%;
   text-align: justify;
