@@ -58,15 +58,30 @@ export default {
 blockquote {
   padding: 0 4% 0 4%;
   text-align: justify;
+  font-size: 1.2rem;
 }
 
 .article-content iframe {
   width: 800px;
   height: 400px;
 }
+.article-content ul {
+  /* text-align: left; */
+  margin-top: 2;
+  margin-bottom: 2px;
+  margin-left: 5%;
+  font-size: 1.1rem;
+  font-weight: bold;
+
+  display: flex;
+  flex-direction: column;
+  justify-self: flex-start;
+  align-self: flex-start;
+}
 
 /* Limitando o tamanho da imagem a ser exibido */
 .article-content img {
+  margin-top: 20px;
   max-width: 100%;
 }
 

@@ -88,7 +88,7 @@ module.exports = app => {
     }
 
     // Função de paginação
-    const limit = 5
+    const limit = 20
 
     //Retornando todas as categorias
     const get = async (req, res) => {
