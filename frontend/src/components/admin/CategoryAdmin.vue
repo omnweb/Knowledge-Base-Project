@@ -81,6 +81,19 @@ export default {
     };
   },
   methods: {
+    reloadCategories() {
+      const url = `${baseApiUrl}/categories/article`;
+      axios.get(url).then((res) => {
+        this.categories = res.data.data.map((category) => {
+          return {
+            ...category,
+            value: category.id,
+            text: category.path,
+          };
+        });
+      });
+    },
+
     loadCategories() {
       const url = `${baseApiUrl}/categories?page=${this.page}`;
       axios.get(url).then((res) => {
@@ -99,6 +112,7 @@ export default {
     reset() {
       this.mode = "save";
       this.category = {};
+      this.reloadCategories();
       this.loadCategories();
     },
     save() {

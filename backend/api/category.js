@@ -87,8 +87,14 @@ module.exports = app => {
         return categoriesWithPath
     }
 
+    const getCategories = (req, res) => {
+        app.db('categories')
+            .then(categories => res.json(withPath(categories)))
+            .catch(err => res.status(500).send(err))
+    }
+
     // Função de paginação
-    const limit = 20
+    const limit = 5
 
     //Retornando todas as categorias
     const get = async (req, res) => {
@@ -135,5 +141,5 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
     //Retornando os métodos
-    return { save, remove, get, getById, getTree }
+    return { save, remove, get, getById, getTree, getCategories }
 }

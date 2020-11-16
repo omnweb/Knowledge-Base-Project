@@ -38,6 +38,11 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .get(app.api.category.getTree)
 
+    // Rotas do método getCategories 
+    app.route('/categories/article')
+        .all(app.config.passport.authenticate())
+        .get(app.api.category.getCategories)
+
     // Retornar os metodos Categorias
     app.route('/categories/:id')
         .all(app.config.passport.authenticate())

@@ -172,9 +172,9 @@ export default {
         .then((res) => (this.article = res.data));
     },
     loadCategories() {
-      const url = `${baseApiUrl}/categories`;
+      const url = `${baseApiUrl}/categories/article`;
       axios.get(url).then((res) => {
-        this.categories = res.data.data.map((category) => {
+        this.categories = res.data.map((category) => {
           return { value: category.id, text: category.path };
         });
       });
