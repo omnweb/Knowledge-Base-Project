@@ -18,6 +18,11 @@ module.exports = app => {
         .post(app.api.user.save) // Forma de acessar usando consign
         .get(admin(app.api.user.get)) // Acessando método get
 
+    //Rota getUsers
+    app.route('/users/article')
+        .all(app.config.passport.authenticate())
+        .get(admin(app.api.user.getUsers))
+
 
     // O método inserir e alterar são o mesmo, mas atuam em urls diferentes
     app.route('/users/:id')

@@ -55,7 +55,7 @@ module.exports = app => {
     }
 
     // FUNÇÃO DE PAGINAÇÃO -> Replicar em usuário e em categorias
-    const limit = 10
+    const limit = 5
     const get = async (req, res) => {
 
         const page = req.query.page || 1// Recebe qual página será exibida, caso não recebe exibe a página 1

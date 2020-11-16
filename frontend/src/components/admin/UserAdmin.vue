@@ -144,9 +144,20 @@ export default {
           // console.log(this.users);
         }); // setando dentro de data.stat
     },
+    reloadUsers() {
+      const url = `${baseApiUrl}/users/article`;
+      axios
+        .get(url) // Recebendo dados do backend
+        .then((res) => {
+          this.users = res.data.data;
+          this.count = res.data.count;
+          this.limit = res.data.limit;
+        });
+    },
     reset() {
       this.mode = "save";
       this.user = {};
+      this.reloadUsers();
       this.loadUsers();
     },
     save() {

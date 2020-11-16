@@ -180,9 +180,9 @@ export default {
       });
     },
     loadUsers() {
-      const url = `${baseApiUrl}/users`;
+      const url = `${baseApiUrl}/users/article`;
       axios.get(url).then((res) => {
-        this.users = res.data.data.map((user) => {
+        this.users = res.data.map((user) => {
           // console.log(res.data.data);
           return { value: user.id, text: `${user.name} - ${user.email}` };
         });

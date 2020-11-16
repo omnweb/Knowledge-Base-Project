@@ -67,10 +67,18 @@ module.exports = app => {
                 .catch(err => res.status(500).send(err))
         }
     }
+    const getUsers = (req, res) => {
+        app.db('users')
+            .select('id', 'name', 'email', 'admin')
+            .whereNull('deletedAt')
+            .andWhere('admin', true)
+            .then(users => res.json(users))
+            .catch(err => res.status(500).send(err))
+    }
 
     // Busca os usuários do sistema
     // Implantar a paginação que estará presente em artigos
-    const limit = 10
+    const limit = 5
     const get = async (req, res) => {
 
         const page = req.query.page || 1
@@ -117,5 +125,5 @@ module.exports = app => {
     }
 
     // Retornarndo um objeto com todas as funções deste módulo usuário
-    return { save, get, getById, remove }
+    return { save, get, getUsers, getById, remove }
 }
