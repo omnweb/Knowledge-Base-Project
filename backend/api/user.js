@@ -71,7 +71,7 @@ module.exports = app => {
         app.db('users')
             .select('id', 'name', 'email', 'admin')
             .whereNull('deletedAt')
-            .andWhere('admin', true)
+            .andWhere('admin', true)// Somente adm pode ser autor
             .then(users => res.json(users))
             .catch(err => res.status(500).send(err))
     }
